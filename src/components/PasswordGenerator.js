@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 const WallPaper = styled('div')({
@@ -49,12 +50,32 @@ const Widget = styled('div')(({ theme }) => ({
   backdropFilter: 'blur(40px)',
 }));
 
+const generatePassword = () => {
+  const chars =
+    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const length = 6;
+  return Array(length)
+    .fill(chars)
+    .map(function (c) {
+      return c[Math.floor(Math.random() * c.length)];
+    })
+    .join('');
+};
+
 export const PasswordGenerator = () => {
+  const parts = [generatePassword(), generatePassword(), generatePassword()];
+  const password = parts.join('-');
+
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Widget>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography noWrap>Password Generator</Typography>
+        <Box
+          component='form'
+          noValidate
+          autoComplete='off'
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
+          <Typography>{password}</Typography>
         </Box>
       </Widget>
       <WallPaper />
