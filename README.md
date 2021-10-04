@@ -1,6 +1,6 @@
 # Password Generator React
 
-### 🎚️ React Web App to generate strong passwords
+### 🔑 React Web App to generate strong passwords in the format of Safari/iCloud Keychain AutoFill.
 
 ![Screenshot](/public/preview.png)
 
